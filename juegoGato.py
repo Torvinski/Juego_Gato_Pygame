@@ -13,6 +13,25 @@ class Cursor(pygame.Rect):
         self.left,self.top = pygame.mouse.get_pos()
 
 
+#Clase boton para los menus        
+class Boton(pygame.sprite.Sprite):
+    def __init__(self,imagen1,imagen2,imagen3,x=200,y=200):
+        self.imagen_vacia =imagen1
+        self.imagen_X = imagen2
+        self.imagen_O = imagen3
+        self.imagen_actual = self.imagen_vacia
+        self.rect = self.imagen_vacia.get_rect()
+        self.rect.left,self.rect.top = x,y
+"""    
+    def update(self,pantalla,cursor):
+        #si colisiona con el cursor se cambia de imagen
+        if cursor.colliderect(self.rect):
+            self.imagen_actual =self.imagen_selec
+        else:
+            self.imagen_actual =self.imagen_normal
+        pantalla.blit(self.imagen_actual,self.rect)  """
+
+
 
 
 #-----Estados del juego
@@ -81,6 +100,7 @@ def main():
 pygame.init()
 
 pygame.display.set_caption('Juego gato')
+#pygame.display.set_icon(icono) #icono de la ventana
 
 black = (0, 0, 0)
 size =width,height= 1366, 643
@@ -106,6 +126,20 @@ opciones=pygame.image.load("iconOpciones.png")
 salir=pygame.image.load("salir.png")
 regresar_jugar=pygame.image.load("regresar_jugando.png")
 regresar_opciones=pygame.image.load("regresar_opciones.png")
+X=pygame.image.load("X.png")
+O=pygame.image.load("O.png")
+invisible=pygame.image.load("invisible.png")
+
+
+
+casilla0=Boton(invisible,X,O)
+casilla2=Boton(invisible,X,O)
+casilla3=Boton(invisible,X,O)
+casilla4=Boton(invisible,X,O)
+casilla5=Boton(invisible,X,O)
+casilla6=Boton(invisible,X,O)
+casilla7=Boton(invisible,X,O)
+casilla8=Boton(invisible,X,O)
 
 
 #creamos los rectangulos de la imagenes, contienen X,Y,Width,Height
@@ -125,7 +159,7 @@ opcionesRect.top , opcionesRect.left = (400, 900)
 regresar_jugarRect = regresar_jugar.get_rect()
 regresar_jugarRect.top , regresar_jugarRect.left = (550,1100)
 
-regresar_opcionesRect=opciones.get_rect()
+regresar_opcionesRect=regresar_opciones.get_rect()
 regresar_opcionesRect.top , regresar_opcionesRect.left =(550,900)
 
 
