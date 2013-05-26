@@ -12,4 +12,7 @@ x = 459 y = 471 cuadro 7
 x = 636 y = 471 cuadro 8
 x = 811 y = 471 cuadro 9
 
+iniciarjuego.png ----------------------------------
+
+
 
