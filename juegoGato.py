@@ -23,12 +23,10 @@ class Kasilla(pygame.sprite.Sprite):
         self.rect = self.imagen_vacia.get_rect()
         self.rect.left,self.rect.top = x,y
 
-
     def setImagenVacia(self,pantalla):
         self.imagen_actual=self.imagen_vacia
         pantalla.blit(self.imagen_actual,self.rect)
         
-
     def setImagenX(self,pantalla):
         self.imagen_actual=self.imagen_X
         pantalla.blit(self.imagen_actual,self.rect)
@@ -36,15 +34,19 @@ class Kasilla(pygame.sprite.Sprite):
     def setImagenO(self,pantalla):
         self.imagen_actual=self.imagen_O
         pantalla.blit(self.imagen_actual,self.rect)
-        
-"""    
+           
     def update(self,pantalla,cursor):
         #si colisiona con el cursor se cambia de imagen
         if cursor.colliderect(self.rect):
-            self.imagen_actual =self.imagen_selec
+            print 'si'
+            self.imagen_actual =self.imagen_X
+            pantalla.blit(self.imagen_actual,self.rect)
+            pygame.display.flip()
+        """
         else:
             self.imagen_actual =self.imagen_normal
-        pantalla.blit(self.imagen_actual,self.rect)  """
+        pantalla.blit(self.imagen_actual,self.rect)
+        """
 
 
 
@@ -73,6 +75,8 @@ def main():
                 sys.exit(0)        
             if event.type == pygame.MOUSEBUTTONDOWN:                
                 miCursor.update()
+
+                casilla0.update(screen,miCursor)
 
                 if estadoJuego == MENU_INICIAL and jugarRect.colliderect(miCursor):
                     estadoJuego= MENU_TURNO
@@ -106,7 +110,7 @@ def main():
                     break
                 
                 if estadoJuego == JUGAR and regresar_jugarRect.colliderect(miCursor):
-                    estadoJuego= MENU_INICIAL
+                    estadoJuego= MENU_TURNO
                     evento=True
                     break
                 
@@ -114,6 +118,9 @@ def main():
                     estadoJuego = MENU_INICIAL
                     evento=True
                     break
+
+                
+                
                 
 
 
@@ -182,7 +189,7 @@ O=pygame.image.load("O.png")
 invisible=pygame.image.load("invisible.png")
 
 
-"""
+
 casilla0=Kasilla(invisible,X,O,459,150)
 casilla1=Kasilla(invisible,X,O,636,150)
 casilla2=Kasilla(invisible,X,O,811,150)
@@ -193,7 +200,7 @@ casilla6=Kasilla(invisible,X,O,459,471)
 casilla7=Kasilla(invisible,X,O,636,471)
 casilla7=Kasilla(invisible,X,O,811,471)
 
-"""
+
 
 #creamos los rectangulos de la imagenes, contienen X,Y,Width,Height
 menuInicialRect = menuInicial.get_rect()
