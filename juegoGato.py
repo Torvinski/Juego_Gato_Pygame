@@ -22,6 +22,21 @@ class Boton(pygame.sprite.Sprite):
         self.imagen_actual = self.imagen_vacia
         self.rect = self.imagen_vacia.get_rect()
         self.rect.left,self.rect.top = x,y
+
+
+    def setImagenVacia(self,pantalla):
+        self.imagen_actual=self.imagen_vacia
+        pantalla.blit(self.imagen_actual,self.rect)
+        
+
+    def setImagenX(self,pantalla):
+        self.imagen_actual=self.imagen_X
+        pantalla.blit(self.imagen_actual,self.rect)
+
+    def setImagenO(self,pantalla):
+        self.imagen_actual=self.imagen_O
+        pantalla.blit(self.imagen_actual,self.rect)
+        
 """    
     def update(self,pantalla,cursor):
         #si colisiona con el cursor se cambia de imagen
