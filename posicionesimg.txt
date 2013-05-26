@@ -1,0 +1,15 @@
+tablero.png ---------------------------------------
+
+x = 459 y = 150 cuadro 1
+x = 636 y = 150 cuadro 2
+x = 811 y = 150 cuadro 3
+
+x = 459 y = 309 cuadro 4
+x = 636 y = 309 cuadro 5
+x = 811 y = 309 cuadro 6
+
+x = 459 y = 471 cuadro 7
+x = 636 y = 471 cuadro 8
+x = 811 y = 471 cuadro 9
+
+
