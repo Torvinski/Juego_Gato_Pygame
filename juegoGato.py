@@ -180,14 +180,16 @@ invisible=pygame.image.load("invisible.png")
 
 
 """
-casilla0=Kasilla(invisible,X,O)
-casilla2=Kasilla(invisible,X,O)
-casilla3=Kasilla(invisible,X,O)
-casilla4=Kasilla(invisible,X,O)
-casilla5=Kasilla(invisible,X,O)
-casilla6=Kasilla(invisible,X,O)
-casilla7=Kasilla(invisible,X,O)
-casilla8=Kasilla(invisible,X,O)
+casilla0=Kasilla(invisible,X,O,459,150)
+casilla1=Kasilla(invisible,X,O,636,150)
+casilla2=Kasilla(invisible,X,O,811,150)
+casilla3=Kasilla(invisible,X,O,459,309)
+casilla4=Kasilla(invisible,X,O,636,309)
+casilla5=Kasilla(invisible,X,O,811,309)
+casilla6=Kasilla(invisible,X,O,459,471)
+casilla7=Kasilla(invisible,X,O,636,471)
+casilla7=Kasilla(invisible,X,O,811,471)
+
 """
 
 #creamos los rectangulos de la imagenes, contienen X,Y,Width,Height
