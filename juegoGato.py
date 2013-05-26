@@ -128,6 +128,9 @@ def main():
             if estadoJuego == MENU_TURNO:
                 screen.fill(black)
                 screen.blit(menuTurno,menuTurnoRect)
+                screen.blit(humano,humanoRect)
+                screen.blit(maquina,maquinaRect)
+                screen.blit(regresar_menuTurno,regresar_menuTurnoRect)
                 
 
             if estadoJuego == JUGAR:
@@ -208,13 +211,13 @@ opcionesRect=opciones.get_rect()
 opcionesRect.top , opcionesRect.left = (400, 900)
 
 humanoRect=humano.get_rect()
-humanoRect.top, humanoRect.left =
+humanoRect.top, humanoRect.left = (286,305)
 
 maquinaRect=maquina.get_rect()
-maquinaRect.top , maquinaRect.left =
+maquinaRect.top , maquinaRect.left = (291,867)
 
 regresar_menuTurnoRect=regresar_menuTurno.get_rect()
-regresar_menuTurnoRect.top , regresar_menuTurnoRect.left = 
+regresar_menuTurnoRect.top , regresar_menuTurnoRect.left = (544,1017)
 
 regresar_jugarRect = regresar_jugar.get_rect()
 regresar_jugarRect.top , regresar_jugarRect.left = (550,1100)
