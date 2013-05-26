@@ -13,6 +13,11 @@ x = 636 y = 471 cuadro 8
 x = 811 y = 471 cuadro 9
 
 iniciarjuego.png ----------------------------------
-
+humano.png
+x = 305 y = 286
+maquina.png
+x = 867 y = 291
+regresar.png
+x = 1017 y = 544
 
 
