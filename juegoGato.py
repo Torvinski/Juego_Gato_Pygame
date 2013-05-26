@@ -14,7 +14,7 @@ class Cursor(pygame.Rect):
 
 
 #Clase boton para los menus        
-class Boton(pygame.sprite.Sprite):
+class Kasilla(pygame.sprite.Sprite):
     def __init__(self,imagen1,imagen2,imagen3,x=200,y=200):
         self.imagen_vacia =imagen1
         self.imagen_X = imagen2
@@ -51,10 +51,16 @@ class Boton(pygame.sprite.Sprite):
 
 #-----Estados del juego
 MENU_INICIAL=0
-JUGAR=1
-OPCIONES=2
-SALIR=3
-#----------------
+MENU_TURNO=1
+JUGAR=2
+OPCIONES=3
+SALIR=4
+#-----Turnos
+MAQUINA=0
+HUMANO=1
+
+#----------
+
 
 def main():
     estadoJuego=MENU_INICIAL
@@ -67,25 +73,49 @@ def main():
                 sys.exit(0)        
             if event.type == pygame.MOUSEBUTTONDOWN:                
                 miCursor.update()
-                                
-                if estadoJuego == JUGAR and regresar_jugarRect.colliderect(miCursor):
-                    estadoJuego= MENU_INICIAL
-                    evento=True
-                    break
-                if estadoJuego == OPCIONES and regresar_opcionesRect.colliderect(miCursor):
-                    estadoJuego = MENU_INICIAL
-                    evento=True
-                    break
+
                 if estadoJuego == MENU_INICIAL and jugarRect.colliderect(miCursor):
-                    estadoJuego= JUGAR
+                    estadoJuego= MENU_TURNO
                     evento=True
+                    break
+                
                 if estadoJuego == MENU_INICIAL and opcionesRect.colliderect(miCursor):
                     estadoJuego= OPCIONES
                     evento=True
                     break
+                
                 if estadoJuego == MENU_INICIAL and salirRect.colliderect(miCursor):                                            
                     sys.exit(0)
                     break
+
+                if estadoJuego == MENU_TURNO and maquinaRect.colliderect(miCursor):
+                    estadoJuego=JUGAR
+                    turno=MAQUINA
+                    evento=True
+                    break
+
+                if estadoJuego == MENU_TURNO and humanoRect.colliderect(miCursor):
+                    estadoJuego=JUGAR
+                    turno=HUMANO
+                    evento=True
+                    break
+
+                if estadoJuego== MENU_TURNO and regresar_menuTurnoRect.colliderect(miCursor):
+                    estadoJuego=MENU_INICIAL
+                    evento=True
+                    break
+                
+                if estadoJuego == JUGAR and regresar_jugarRect.colliderect(miCursor):
+                    estadoJuego= MENU_INICIAL
+                    evento=True
+                    break
+                
+                if estadoJuego == OPCIONES and regresar_opcionesRect.colliderect(miCursor):
+                    estadoJuego = MENU_INICIAL
+                    evento=True
+                    break
+                
+
 
         if evento==True:           
             if estadoJuego == MENU_INICIAL:
@@ -93,7 +123,12 @@ def main():
                 screen.blit(menuInicial,menuInicialRect)#agregamos a la pantalla la imagen y deacuerdo a su rectangulo                
                 screen.blit(jugar,jugarRect)
                 screen.blit(opciones, opcionesRect)
-                screen.blit(salir,salirRect)                
+                screen.blit(salir,salirRect)
+
+            if estadoJuego == MENU_TURNO:
+                screen.fill(black)
+                screen.blit(menuTurno,menuTurnoRect)
+                
 
             if estadoJuego == JUGAR:
                 screen.fill(black)
@@ -122,44 +157,43 @@ size =width,height= 1366, 643
 
 screen=pygame.display.set_mode(size)
 
-
-"""
-background = pygame.Surface(screen.get_size())
-background = background.convert()
-background.fill((250, 250, 250))
-
-"""
-
-
-
+#cargamos las imagenes
 menuInicial = pygame.image.load("menuInicial.png")
 menuOpciones = pygame.image.load("menuOpciones.png")
+menuTurno = pygame.image.load("menuTurno.png")
 tablero=pygame.image.load("tablero.png")
 
 jugar=pygame.image.load("jugar.png")
 opciones=pygame.image.load("iconOpciones.png")
 salir=pygame.image.load("salir.png")
+humano=pygame.image.load("humano.png")
+maquina=pygame.image.load("maquina.png")
+
 regresar_jugar=pygame.image.load("regresar_jugando.png")
 regresar_opciones=pygame.image.load("regresar_opciones.png")
+regresar_menuTurno=pygame.image.load("regresar_opciones.png").convert_alpha()
+
+
 X=pygame.image.load("X.png")
 O=pygame.image.load("O.png")
 invisible=pygame.image.load("invisible.png")
 
 
-
-casilla0=Boton(invisible,X,O)
-casilla2=Boton(invisible,X,O)
-casilla3=Boton(invisible,X,O)
-casilla4=Boton(invisible,X,O)
-casilla5=Boton(invisible,X,O)
-casilla6=Boton(invisible,X,O)
-casilla7=Boton(invisible,X,O)
-casilla8=Boton(invisible,X,O)
-
+"""
+casilla0=Kasilla(invisible,X,O)
+casilla2=Kasilla(invisible,X,O)
+casilla3=Kasilla(invisible,X,O)
+casilla4=Kasilla(invisible,X,O)
+casilla5=Kasilla(invisible,X,O)
+casilla6=Kasilla(invisible,X,O)
+casilla7=Kasilla(invisible,X,O)
+casilla8=Kasilla(invisible,X,O)
+"""
 
 #creamos los rectangulos de la imagenes, contienen X,Y,Width,Height
 menuInicialRect = menuInicial.get_rect()
 menuOpcionesRect = menuOpciones.get_rect()
+menuTurnoRect= menuTurno.get_rect()
 tableroRect=tablero.get_rect()
 
 jugarRect= jugar.get_rect()
@@ -170,6 +204,15 @@ salirRect.top , salirRect.left = (500,900)
 
 opcionesRect=opciones.get_rect()
 opcionesRect.top , opcionesRect.left = (400, 900)
+
+humanoRect=humano.get_rect()
+humanoRect.top, humanoRect.left =
+
+maquinaRect=maquina.get_rect()
+maquinaRect.top , maquinaRect.left =
+
+regresar_menuTurnoRect=regresar_menuTurno.get_rect()
+regresar_menuTurnoRect.top , regresar_menuTurnoRect.left = 
 
 regresar_jugarRect = regresar_jugar.get_rect()
 regresar_jugarRect.top , regresar_jugarRect.left = (550,1100)
