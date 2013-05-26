@@ -21,6 +21,7 @@ regresar.png
 x = 1017 y = 544
 
 
+menuopciones.png ----------------------------------
 
 
 
