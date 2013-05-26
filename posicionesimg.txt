@@ -22,6 +22,11 @@ x = 1017 y = 544
 
 
 menuopciones.png ----------------------------------
-
+si.png
+x = 710 y = 170
+no.png
+x = 1028 y = 170
+regresar.png
+x = 993 y = 511
 
 
