@@ -12,6 +12,11 @@ x = 459 y = 471 cuadro 7
 x = 636 y = 471 cuadro 8
 x = 811 y = 471 cuadro 9
 
+
+jugmono.png y jugrobot.png
+x = 1130 y = 0
+
+
 iniciarjuego.png ----------------------------------
 humano.png
 x = 305 y = 286
