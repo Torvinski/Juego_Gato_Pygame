@@ -79,10 +79,11 @@ MAQUINA=0
 HUMANO=1
 
 #----------
-
+"""
 def clickCasilla(cursor):
-    if casilla0.update(cursor):
-        
+    if casilla0.click(cursor):
+        A.actualizarTablero(0
+"""        
 
 
 def main():
@@ -269,7 +270,8 @@ invisible=pygame.image.load("invisible.png")
 SI=pygame.image.load("SI.png")
 NO=pygame.image.load("NO.png")
 
-pygame.mixer.music.load("musicmenu.mp3")
+#pygame.mixer.music.load("musicmenu.mp3")
+pygame.mixer.music.load("sound_2.mp3")
 
 
 casilla0=Kasilla(invisible,X,O,459,150)
