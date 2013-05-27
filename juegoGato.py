@@ -42,11 +42,16 @@ class Kasilla(pygame.sprite.Sprite):
            
     def update(self,pantalla,cursor):
         #si colisiona con el cursor se cambia de imagen
+
+
         if cursor.colliderect(self.rect):
+            return True
+        """
             print 'si'
             self.imagen_actual =self.imagen_X
             pantalla.blit(self.imagen_actual,self.rect)
             pygame.display.flip()
+        """
         """
         else:
             self.imagen_actual =self.imagen_normal
@@ -70,6 +75,9 @@ MAQUINA=0
 HUMANO=1
 
 #----------
+
+def clickCasilla(screen,cursor,):
+    if
 
 
 def main():
