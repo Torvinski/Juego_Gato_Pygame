@@ -231,7 +231,7 @@ class Ambiente:
 
 #comentar desde aqui
 A=Ambiente() #Crea el objeto de ambiente
-print (A.regresarTablero()) #Regresara un string del tablero del gato, en este caso será una cadena vacia
+print (A.regresarTablero()) #Regresara un string del tablero del gato, en este caso sera una cadena vacia
 A.seleccionarTurno(1) #Selecciona el turno, ya sea maquina o humano (maquina es 0 por default, cualquier otro valor es para elegir al humano).
 print (A.regresarTablero()) 
 

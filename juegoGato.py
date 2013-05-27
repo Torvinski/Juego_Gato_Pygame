@@ -1,5 +1,6 @@
 
 import pygame, sys, time
+from gatoIA import *
 
 
 
@@ -57,6 +58,9 @@ MENU_TURNO=1
 JUGAR=2
 OPCIONES=3
 SALIR=4
+GANA_JUGADOR=5
+GANA_MAQUINA=6
+GANA_EMPATE=7
 #-----Turnos
 MAQUINA=0
 HUMANO=1
@@ -65,6 +69,11 @@ HUMANO=1
 
 
 def main():
+    A.reiniciarJuego()
+    print A.regresarTablero()
+    A.seleccionarTurno(0)
+    A.regresarTablero()
+    
     estadoJuego=MENU_INICIAL
     miCursor=Cursor()
     evento=True
@@ -76,8 +85,18 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN:                
                 miCursor.update()
 
-                casilla0.update(screen,miCursor)
-
+                if estadoJuego==JUGAR:
+                    casilla0.update(screen,miCursor)
+                    casilla1.update(screen,miCursor)
+                    casilla2.update(screen,miCursor)
+                    casilla3.update(screen,miCursor)
+                    casilla4.update(screen,miCursor)
+                    casilla5.update(screen,miCursor)
+                    casilla6.update(screen,miCursor)
+                    casilla7.update(screen,miCursor)
+                    casilla8.update(screen,miCursor)
+                    
+                        
                 if estadoJuego == MENU_INICIAL and jugarRect.colliderect(miCursor):
                     estadoJuego= MENU_TURNO
                     evento=True
@@ -109,7 +128,7 @@ def main():
                     evento=True
                     break
                 
-                if estadoJuego == JUGAR and regresar_jugarRect.colliderect(miCursor):
+                if estadoJuego == JUGAR and regresar_jugarRect.colliderect(miCursor):                    
                     estadoJuego= MENU_TURNO
                     evento=True
                     break
@@ -119,11 +138,7 @@ def main():
                     evento=True
                     break
 
-                
-                
-                
-
-
+                                            
         if evento==True:           
             if estadoJuego == MENU_INICIAL:
                 screen.fill(black)
@@ -171,6 +186,10 @@ screen=pygame.display.set_mode(size)
 menuInicial = pygame.image.load("menuInicial.png")
 menuOpciones = pygame.image.load("menuOpciones.png")
 menuTurno = pygame.image.load("menuTurno.png")
+
+menuGanaHumano=pygame.image.load("ganaHumano.py")
+menuGanaMaquina=pygame.image.load("ganaMaquina.py)
+
 tablero=pygame.image.load("tablero.png")
 
 jugar=pygame.image.load("jugar.png")
@@ -198,7 +217,7 @@ casilla4=Kasilla(invisible,X,O,636,309)
 casilla5=Kasilla(invisible,X,O,811,309)
 casilla6=Kasilla(invisible,X,O,459,471)
 casilla7=Kasilla(invisible,X,O,636,471)
-casilla7=Kasilla(invisible,X,O,811,471)
+casilla8=Kasilla(invisible,X,O,811,471)
 
 
 
@@ -216,6 +235,13 @@ salirRect.top , salirRect.left = (500,900)
 
 opcionesRect=opciones.get_rect()
 opcionesRect.top , opcionesRect.left = (400, 900)
+
+
+menuGanaHumanoRect=menuGanaHumano.get_rect()
+menuGanaHumanoRect.top , menuGanaHumano.left = (
+
+menuGanaMaquinaRect=menuGanaMaquina.get_rect()
+menuGanaMaquinaRect.top , menuGanaMaquinaRect.left = (
 
 humanoRect=humano.get_rect()
 humanoRect.top, humanoRect.left = (286,305)
