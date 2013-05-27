@@ -151,15 +151,7 @@ def main():
                     break
 
 
-        A.actualizarTablero(0)
-        posiciones=list(A.regresarTablero())
-        
-        if posiciones[0]=='X':
-            print 'oh si'
-            casilla0.setImagenX(screen)
-        if posiciones[0]=='O':
-            print 'oh no'
-            casilla0.setImagenO(screen)
+
                                             
         if evento==True:           
             if estadoJuego == MENU_INICIAL:
@@ -200,6 +192,17 @@ def main():
 
             pygame.display.flip() #actualizamos la pantalla
             evento=False
+
+            if estadoJuego==JUGAR:
+                A.actualizarTablero(0)
+                posiciones=list(A.regresarTablero())
+                
+                if posiciones[0]=='X':
+                    print 'oh si'
+                    casilla0.setImagenX(screen)
+                if posiciones[0]=='O':
+                    print 'oh no'
+                    casilla0.setImagenO(screen)
     
 
 
