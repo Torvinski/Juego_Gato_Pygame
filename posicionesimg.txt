@@ -29,6 +29,12 @@ x = 1028 y = 170
 regresar.png
 x = 993 y = 511
 
+¡NUEVO!
+palomita.png <- en caso de que elija si
+x = 634 y = 176
+palomita.png <- en caso de que elija no
+x = 926 y = 180
+
 juegoterminadogana.png, juegoterminadopierde.png y juegoterminadoempate.png -----------
 palomita.png <- en caso de que elija si
 x = 413 y = 551
