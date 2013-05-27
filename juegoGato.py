@@ -79,11 +79,45 @@ MAQUINA=0
 HUMANO=1
 
 #----------
-"""
+
 def clickCasilla(cursor):
     if casilla0.click(cursor):
-        A.actualizarTablero(0
-"""        
+        A.actualizarTablero(0)
+        return True
+    if casilla1.click(cursor):
+        A.actualizarTablero(1)
+        return True
+    if casilla2.click(cursor):
+        A.actualizarTablero(2)
+        return True
+    if casilla3.click(cursor):
+        A.actualizarTablero(3)
+        return True
+    if casilla4.click(cursor):
+        A.actualizarTablero(4)
+        return True
+    if casilla5.click(cursor):
+        A.actualizarTablero(5)
+        return True
+    if casilla6.click(cursor):
+        A.actualizarTablero(6)
+        return True
+    if casilla7.click(cursor):
+        A.actualizarTablero(7)
+        return True
+    if casilla8.click(cursor):
+        A.actualizarTablero(8)
+        return True
+
+def imprimirCasillas(posiciones,casillas,pantalla):
+    for i in range(0,9):
+        if posiciones[i]=='X':
+            casillas[i].setImagenX(pantalla)
+        if posiciones[i]=='O':
+            casillas[i].setImagenO(pantalla)
+    
+    
+      
 
 
 def main():
@@ -171,16 +205,19 @@ def main():
 
         
         if estadoJuego==JUGAR:
-            A.actualizarTablero(0)
+            clickCasilla(miCursor)
             posiciones=list(A.regresarTablero())
-                
+            imprimirCasillas(posiciones,casillas,screen)
+            
+
+            """
             if posiciones[0]=='X':
-                print 'oh si'
+                #print 'oh si'
                 casilla0.setImagenX(screen)
             if posiciones[0]=='O':
-                print 'oh no'
+                #print 'oh no'
                 casilla0.setImagenO(screen)
-        
+            """
 
 
                                             
@@ -270,8 +307,8 @@ invisible=pygame.image.load("invisible.png")
 SI=pygame.image.load("SI.png")
 NO=pygame.image.load("NO.png")
 
-#pygame.mixer.music.load("musicmenu.mp3")
-pygame.mixer.music.load("sound_2.mp3")
+pygame.mixer.music.load("musicmenu.mp3")
+#pygame.mixer.music.load("sound_2.mp3")
 
 
 casilla0=Kasilla(invisible,X,O,459,150)
@@ -283,6 +320,18 @@ casilla5=Kasilla(invisible,X,O,811,309)
 casilla6=Kasilla(invisible,X,O,459,471)
 casilla7=Kasilla(invisible,X,O,636,471)
 casilla8=Kasilla(invisible,X,O,811,471)
+
+casillas=[]
+casillas.append(casilla0)
+casillas.append(casilla1)
+casillas.append(casilla2)
+casillas.append(casilla3)
+casillas.append(casilla4)
+casillas.append(casilla5)
+casillas.append(casilla6)
+casillas.append(casilla7)
+casillas.append(casilla8)
+
 
 #creamos los rectangulos de la imagenes, contienen X,Y,Width,Height
 menuInicialRect = menuInicial.get_rect()
