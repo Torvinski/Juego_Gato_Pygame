@@ -155,9 +155,9 @@ def main():
         posiciones=list(A.regresarTablero())
         
         if posiciones[0]=='X':
-            casilla0.setImagenX()
+            casilla0.setImagenX(screen)
         if posiciones[0]=='O':
-            casilla0.setImagenO()
+            casilla0.setImagenO(screen)
                                             
         if evento==True:           
             if estadoJuego == MENU_INICIAL:
