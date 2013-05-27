@@ -73,8 +73,10 @@ def main():
     print A.regresarTablero()
     A.seleccionarTurno(0)
     A.regresarTablero()
+
     
     estadoJuego=MENU_INICIAL
+    sonidoActivado=False
     miCursor=Cursor()
     evento=True
     
@@ -95,7 +97,14 @@ def main():
                     casilla6.update(screen,miCursor)
                     casilla7.update(screen,miCursor)
                     casilla8.update(screen,miCursor)
-                    
+
+                if estadoJuego==OPCIONES:
+                    if SIRect.colliderect(miCursor) and sonidoActivado==False:
+                        sonidoActivado=True
+                        evento=True
+                    if NORect.colliderect(miCursor) and sonidoActivado==True:
+                        sonidoActivado=False
+                        evento=True
                         
                 if estadoJuego == MENU_INICIAL and jugarRect.colliderect(miCursor):
                     estadoJuego= MENU_TURNO
@@ -162,7 +171,13 @@ def main():
 
             if estadoJuego == OPCIONES:
                 screen.fill(black)
-                screen.blit(menuOpciones,menuOpcionesRect)                
+                screen.blit(menuOpciones,menuOpcionesRect)
+                screen.blit(SI,SIRect)
+                screen.blit(NO,NORect)
+                if sonidoActivado==True:
+                    screen.blit(palomitaSI,palomitaSIRect)
+                else:
+                    screen.blit(palomitaNO,palomitaNORect)
                 screen.blit(regresar_opciones,regresar_opcionesRect)
                 
 
@@ -187,8 +202,9 @@ menuInicial = pygame.image.load("menuInicial.png")
 menuOpciones = pygame.image.load("menuOpciones.png")
 menuTurno = pygame.image.load("menuTurno.png")
 
-menuGanaHumano=pygame.image.load("ganaHumano.py")
-menuGanaMaquina=pygame.image.load("ganaMaquina.py)
+menuGanaHumano=pygame.image.load("menuGanaHumano.png")
+menuGanaMaquina=pygame.image.load("menuGanaMaquina.png")
+menuEmpatan=pygame.image.load("menuEmpatan.png")                                  
 
 tablero=pygame.image.load("tablero.png")
 
@@ -197,6 +213,9 @@ opciones=pygame.image.load("iconOpciones.png")
 salir=pygame.image.load("salir.png")
 humano=pygame.image.load("humano.png")
 maquina=pygame.image.load("maquina.png")
+palomitaSI=pygame.image.load("palomita.png")
+palomitaNO=pygame.image.load("palomita.png").convert_alpha()
+
 
 regresar_jugar=pygame.image.load("regresar_jugando.png")
 regresar_opciones=pygame.image.load("regresar_opciones.png")
@@ -207,7 +226,8 @@ X=pygame.image.load("X.png")
 O=pygame.image.load("O.png")
 invisible=pygame.image.load("invisible.png")
 
-
+SI=pygame.image.load("SI.png")
+NO=pygame.image.load("NO.png")
 
 casilla0=Kasilla(invisible,X,O,459,150)
 casilla1=Kasilla(invisible,X,O,636,150)
@@ -219,13 +239,14 @@ casilla6=Kasilla(invisible,X,O,459,471)
 casilla7=Kasilla(invisible,X,O,636,471)
 casilla8=Kasilla(invisible,X,O,811,471)
 
-
-
 #creamos los rectangulos de la imagenes, contienen X,Y,Width,Height
 menuInicialRect = menuInicial.get_rect()
 menuOpcionesRect = menuOpciones.get_rect()
 menuTurnoRect= menuTurno.get_rect()
 tableroRect=tablero.get_rect()
+menuGanaHumanoRect=menuGanaHumano.get_rect()
+menuGanaMaquinaRect=menuGanaMaquina.get_rect()
+menuEmpatanRect=menuEmpatan.get_rect()                                  
 
 jugarRect= jugar.get_rect()
 jugarRect.top,jugarRect.left  = (300,900)
@@ -235,14 +256,7 @@ salirRect.top , salirRect.left = (500,900)
 
 opcionesRect=opciones.get_rect()
 opcionesRect.top , opcionesRect.left = (400, 900)
-
-
-menuGanaHumanoRect=menuGanaHumano.get_rect()
-menuGanaHumanoRect.top , menuGanaHumano.left = (
-
-menuGanaMaquinaRect=menuGanaMaquina.get_rect()
-menuGanaMaquinaRect.top , menuGanaMaquinaRect.left = (
-
+                                  
 humanoRect=humano.get_rect()
 humanoRect.top, humanoRect.left = (286,305)
 
@@ -256,7 +270,19 @@ regresar_jugarRect = regresar_jugar.get_rect()
 regresar_jugarRect.top , regresar_jugarRect.left = (550,1100)
 
 regresar_opcionesRect=regresar_opciones.get_rect()
-regresar_opcionesRect.top , regresar_opcionesRect.left =(550,900)
+regresar_opcionesRect.top , regresar_opcionesRect.left =(511,993)
+
+SIRect=SI.get_rect()
+SIRect.top , SIRect.left = (170,710)
+
+NORect=NO.get_rect()
+NORect.top , NORect.left = (170,1028)
+
+palomitaSIRect=palomitaSI.get_rect()
+palomitaSIRect.top , palomitaSIRect.left = (176,634)
+
+palomitaNORect=palomitaNO.get_rect()
+palomitaNORect.top , palomitaNORect.left = (180,926)
 
 
 
