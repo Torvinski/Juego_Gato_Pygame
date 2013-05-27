@@ -77,6 +77,7 @@ def main():
     sonidoActivado=True
     miCursor=Cursor()
     evento=True
+    turno=MAQUINA
     
     while 1:    
         for event in pygame.event.get():
@@ -85,6 +86,7 @@ def main():
             if event.type == pygame.MOUSEBUTTONDOWN:                
                 miCursor.update()
 
+                """
                 if estadoJuego==JUGAR:
                     casilla0.update(screen,miCursor)
                     casilla1.update(screen,miCursor)
@@ -95,6 +97,7 @@ def main():
                     casilla6.update(screen,miCursor)
                     casilla7.update(screen,miCursor)
                     casilla8.update(screen,miCursor)
+                """
 
                 if estadoJuego==OPCIONES:
                     if SIRect.colliderect(miCursor) and sonidoActivado==False:
@@ -121,12 +124,14 @@ def main():
                 if estadoJuego == MENU_TURNO and maquinaRect.colliderect(miCursor):
                     estadoJuego=JUGAR
                     turno=MAQUINA
+                    A.seleccionarTurno(MAQUINA)
                     evento=True
                     break
 
                 if estadoJuego == MENU_TURNO and humanoRect.colliderect(miCursor):
                     estadoJuego=JUGAR
                     turno=HUMANO
+                    A.seleccionarTurno(HUMANO)
                     evento=True
                     break
 
@@ -145,7 +150,14 @@ def main():
                     evento=True
                     break
 
+
+        A.actualizarTablero(0)
+        posiciones=list(A.regresarTablero())
         
+        if posiciones[0]=='X':
+            casilla0.setImagenX()
+        if posiciones[0]=='O':
+            casilla0.setImagenO()
                                             
         if evento==True:           
             if estadoJuego == MENU_INICIAL:
@@ -232,7 +244,8 @@ invisible=pygame.image.load("invisible.png")
 SI=pygame.image.load("SI.png")
 NO=pygame.image.load("NO.png")
 
-pygame.mixer.music.load("musicaFondo.mp3")
+pygame.mixer.music.load("musicmenu.mp3")
+
 
 casilla0=Kasilla(invisible,X,O,459,150)
 casilla1=Kasilla(invisible,X,O,636,150)
