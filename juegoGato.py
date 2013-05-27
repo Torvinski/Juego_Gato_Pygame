@@ -70,13 +70,11 @@ HUMANO=1
 
 def main():
     A.reiniciarJuego()
-    print A.regresarTablero()
-    A.seleccionarTurno(0)
-    A.regresarTablero()
 
-    
+    pygame.mixer.music.play(-1)#para que se ejecute la musica idefinidamente
+        
     estadoJuego=MENU_INICIAL
-    sonidoActivado=False
+    sonidoActivado=True
     miCursor=Cursor()
     evento=True
     
@@ -147,6 +145,7 @@ def main():
                     evento=True
                     break
 
+        
                                             
         if evento==True:           
             if estadoJuego == MENU_INICIAL:
@@ -176,7 +175,11 @@ def main():
                 screen.blit(NO,NORect)
                 if sonidoActivado==True:
                     screen.blit(palomitaSI,palomitaSIRect)
+                    if pygame.mixer.music.get_busy() == False: #si el sonido  no se esta reproduciendo
+                        pygame.mixer.music.play(-1)
                 else:
+                    if pygame.mixer.music.get_busy(): #si el sonido se esta reproduciendo
+                        pygame.mixer.music.stop()
                     screen.blit(palomitaNO,palomitaNORect)
                 screen.blit(regresar_opciones,regresar_opcionesRect)
                 
@@ -228,6 +231,8 @@ invisible=pygame.image.load("invisible.png")
 
 SI=pygame.image.load("SI.png")
 NO=pygame.image.load("NO.png")
+
+pygame.mixer.music.load("musicaFondo.mp3")
 
 casilla0=Kasilla(invisible,X,O,459,150)
 casilla1=Kasilla(invisible,X,O,636,150)
