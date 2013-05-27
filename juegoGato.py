@@ -27,14 +27,18 @@ class Kasilla(pygame.sprite.Sprite):
     def setImagenVacia(self,pantalla):
         self.imagen_actual=self.imagen_vacia
         pantalla.blit(self.imagen_actual,self.rect)
+        pygame.display.flip()
         
     def setImagenX(self,pantalla):
         self.imagen_actual=self.imagen_X
         pantalla.blit(self.imagen_actual,self.rect)
+        pygame.display.flip()
 
     def setImagenO(self,pantalla):
         self.imagen_actual=self.imagen_O
         pantalla.blit(self.imagen_actual,self.rect)
+        pygame.display.flip()
+        
            
     def update(self,pantalla,cursor):
         #si colisiona con el cursor se cambia de imagen
@@ -151,6 +155,19 @@ def main():
                     break
 
 
+        
+        if estadoJuego==JUGAR:
+            A.actualizarTablero(0)
+            posiciones=list(A.regresarTablero())
+                
+            if posiciones[0]=='X':
+                print 'oh si'
+                casilla0.setImagenX(screen)
+            if posiciones[0]=='O':
+                print 'oh no'
+                casilla0.setImagenO(screen)
+        
+
 
                                             
         if evento==True:           
@@ -193,16 +210,6 @@ def main():
             pygame.display.flip() #actualizamos la pantalla
             evento=False
 
-            if estadoJuego==JUGAR:
-                A.actualizarTablero(0)
-                posiciones=list(A.regresarTablero())
-                
-                if posiciones[0]=='X':
-                    print 'oh si'
-                    casilla0.setImagenX(screen)
-                if posiciones[0]=='O':
-                    print 'oh no'
-                    casilla0.setImagenO(screen)
     
 
 
