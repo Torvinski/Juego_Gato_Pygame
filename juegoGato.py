@@ -155,8 +155,10 @@ def main():
         posiciones=list(A.regresarTablero())
         
         if posiciones[0]=='X':
+            print 'oh si'
             casilla0.setImagenX(screen)
         if posiciones[0]=='O':
+            print 'oh no'
             casilla0.setImagenO(screen)
                                             
         if evento==True:           
